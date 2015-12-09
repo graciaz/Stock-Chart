@@ -19,7 +19,7 @@ def median(data):
     """find and return median from data"""
     return statistics.median(data)
 
-def SD(data):
+def stand_div(data):
     """find and return standard deviation from data"""
     return statistics.stdev(data)
 
