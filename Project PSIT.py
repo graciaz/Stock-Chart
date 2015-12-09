@@ -10,6 +10,7 @@ def get_database(stock):
 	import_time = mystock.get_trade_datetime() #เวลาที่ดึงฐานข้อมูล
 	stock_db = mystock.get_historical("2015-01-01", now.isoformat()) #ฐานข้อมูลหุ้นตั้งแต่วันที่ 1 มกราคม 2558 ถึงปัจจุบัน
 	return now, stock, open_value, now_price, import_time, stock_db
+
 def mean(data):
     """find and return mean from data"""
     return statistics.mean(data)
@@ -24,4 +25,4 @@ def SD(data):
 
 def mode(data):
     """find and return mode from data"""
-    return statistics.mode(data)
+    return max(set(data), key=data.count)
