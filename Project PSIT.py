@@ -28,6 +28,24 @@ def mode(close_list):
     """find and return mode from data"""
     return max(set(close_list), key=close_list.count)
 
+def futurerate(close_list):
+    """"""
+    latest_close = close_list[len(close_list)-1]
+    higher = []
+    lower = []
+    for inte in range(len(close_list)-1, len(close_list)-12, -1):
+        if close_list[inte] >= latest_close:
+            higher.append(close_list[inte])
+        else:
+            lower.append(close_list[inte])
+    if higher > lower:
+        future_close = "Will raise."
+    elif higher < lower:
+        future_close = "Will fell."
+    else:
+        future_close = "Will balance."
+    return future_close
+
 def main(stock, inte=0):
     """Print Ploted graph and statistics"""
     now, stock, open_value, now_price, import_time, stock_db = get_database(stock)
@@ -45,16 +63,17 @@ def main(stock, inte=0):
         date_list.append(date_dic[i])
         close_list.append(close_dic[i])
         count += 1
-    pylab.figure(1)
-    x = range(len(close_list))
-    pylab.xticks(x, date_list)
-    pylab.plot(x,close_list,"g")
-    pylab.show()
     for inte in range(len(close_list)):
         close_list[inte] = float(close_list[inte])
     print("Mean :", mean(close_list))
     print("Median :", median(close_list))
     print("SD :", stand_div(close_list))
     print("Mode :", mode(close_list))
+    print("Future Close Rate :", futurerate(close_list))
+    pylab.figure(1)
+    x = range(len(close_list))
+    pylab.xticks(x, date_list)
+    pylab.plot(x,close_list,"g")
+    pylab.show()
 
 main(input("Input Stock name : "))
