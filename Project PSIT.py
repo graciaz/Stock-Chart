@@ -29,11 +29,11 @@ def mode(close_list):
     return max(set(close_list), key=close_list.count)
 
 def futurerate(close_list):
-    """"""
+    """Return predicted close rate."""
     latest_close = close_list[len(close_list)-1]
     higher = []
     lower = []
-    for inte in range(len(close_list)-1, len(close_list)-12, -1):
+    for inte in range(len(close_list)-1, len(close_list)-14, -1):
         if close_list[inte] >= latest_close:
             higher.append(close_list[inte])
         else:
