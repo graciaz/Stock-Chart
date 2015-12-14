@@ -37,9 +37,9 @@ def futurerate(close_list):
             higher.append(close_list[inte])
         else:
             lower.append(close_list[inte])
-    if higher > lower:
+    if len(higher) > len(lower):
         future_close = "Will raise."
-    elif higher < lower:
+    elif len(higher) < len(lower):
         future_close = "Will fell."
     else:
         future_close = "Will balance."
