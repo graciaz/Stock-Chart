@@ -57,11 +57,9 @@ def main(stock, inte=0):
             elif keys_count.upper() == 'DATE':
                 date_dic.setdefault(inte, dict_count[keys_count])
         inte += 1
-    count = 0
     for i in range(inte-1, -1, -1):
         date_list.append(date_dic[i])
         close_list.append(close_dic[i])
-        count += 1
     for inte in range(len(close_list)):
         close_list[inte] = float(close_list[inte])
     print("Mean :", mean(close_list))
